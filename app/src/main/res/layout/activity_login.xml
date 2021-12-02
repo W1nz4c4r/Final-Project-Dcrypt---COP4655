@@ -70,12 +70,13 @@
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/HTB"
         android:text="@string/loginbtn"
+        android:onClick="onClick"
         android:textColor="@color/logBACK" />
 
     <TextView
         android:id="@+id/create_user"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
+        android:layout_height="35dp"
         android:layout_below="@id/LoginBTN"
         android:layout_centerHorizontal="true"
         android:onClick="onClick"
@@ -85,11 +86,11 @@
     <TextView
         android:id="@+id/forgotPASS"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
+        android:layout_height="35dp"
         android:layout_below="@id/create_user"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="35dp"
         android:onClick="onClick"
@@ -119,6 +120,7 @@
             android:layout_height="48dp"
             android:src="@drawable/google"
             android:layout_margin="20dp"
+            android:onClick="onClick"
             />
         <ImageView
             android:id="@+id/facebookBTN"
@@ -126,6 +128,7 @@
             android:layout_height="48dp"
             android:src="@drawable/facebook"
             android:layout_margin="20dp"
+            android:onClick="onClick"
             />
 
     </LinearLayout>
