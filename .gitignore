@@ -13,3 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+settings.gradle
+gradlew.bat
+/app/google-services.json
+/app/src/main/res/values
