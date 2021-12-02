@@ -14,4 +14,6 @@
 .cxx
 local.properties
 app/google-services.json
-gradlew.bat
+app/proguard-rules.pro
+src/main/res/values/strings.xml
+src/main/java/com/rmoralessolo2016/dcrypt/GitHub_page.java

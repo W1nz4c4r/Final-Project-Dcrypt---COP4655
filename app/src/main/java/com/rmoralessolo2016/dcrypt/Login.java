@@ -55,7 +55,7 @@ public class Login extends AppCompatActivity  {
          create_user = (TextView) findViewById(R.id.create_user);
          forgot_User = (TextView) findViewById(R.id.forgotPASS);
         ImageView google_login = (ImageView) findViewById(R.id.googleBTN);
-        ImageView facebook_login = (ImageView) findViewById(R.id.facebookBTN);
+        ImageView facebook_login = (ImageView) findViewById(R.id.githubBTN);
         MaterialButton loginButton = (MaterialButton) findViewById(R.id.LoginBTN);
 
         // [START config_signin]
@@ -171,7 +171,10 @@ public class Login extends AppCompatActivity  {
     }
     // [END auth_with_google]
 
-
+    public void github_login(){
+        Intent intent = new Intent(getApplicationContext(), GitHub_page.class);
+        startActivity(intent);
+    }//end of github login
 
     private void updateUI(FirebaseUser user) {
         if (user != null){
@@ -197,6 +200,10 @@ public class Login extends AppCompatActivity  {
 
             case R.id.googleBTN:
                 Google_login();
+                break;
+
+            case R.id.githubBTN:
+                github_login();
                 break;
         }
     } //end of on click

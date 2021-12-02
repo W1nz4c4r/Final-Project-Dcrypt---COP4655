@@ -123,23 +123,16 @@
             android:onClick="onClick"
             />
         <ImageView
-            android:id="@+id/facebookBTN"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/facebook"
+            android:id="@+id/githubBTN"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:src="@drawable/github_logo"
             android:layout_margin="20dp"
             android:onClick="onClick"
             />
 
     </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="?android:attr/progressBarStyleLarge"
-        android:visibility="gone"
-        android:layout_centerInParent="true"/>
 
 
 
