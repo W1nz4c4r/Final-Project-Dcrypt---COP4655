@@ -7,7 +7,7 @@
 
     <item
         android:state_selected="false"
-        android:drawable="@color/white"
-        android:color="@color/white"
+        android:drawable="@color/silver_sand"
+        android:color="@color/silver_sand"
         />
 </selector>
