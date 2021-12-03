@@ -12,6 +12,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -23,9 +29,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
+
+import okhttp3.OkHttpClient;
+
 public class Home_Page extends AppCompatActivity {
     FirebaseAuth mAuth;
-
+    TextView prueba;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +46,8 @@ public class Home_Page extends AppCompatActivity {
         // declare bottom nav view
         BottomNavigationView bottomNavigationView =  (BottomNavigationView) findViewById(R.id.Bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.Home);
+        prueba =  findViewById(R.id.prueba);
+
 
         //add listener to the Bottom navigation
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -65,8 +77,39 @@ public class Home_Page extends AppCompatActivity {
             }
         });
 
-
+        launch_prueba();
     }//end of onCreate
+
+    private void launch_prueba() {
+        Log.e("TAG", "Inside launch prueba");
+
+        //making the resquest URL
+        String url = getString(R.string.coinBase) + "currencies";
+        Log.e("TAG", "the URL is: " + url);
+
+        //doing the request with volley
+        RequestQueue queue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.e("TAG", response);
+                prueba.setText(response);
+                HandleResponse(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Something went wrong, please go back and check your URL", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        //add the resquest to the resquest queue
+        queue.add(stringRequest);
+
+    }//end of launch_prueba
+
+    private void HandleResponse(String response) {
+    }
 
     @Override
     protected void onStart() {
