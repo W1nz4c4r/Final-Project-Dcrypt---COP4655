@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -30,12 +31,9 @@ public class Home_Page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        profile_name = (TextView) findViewById(R.id.Profile_Name);
-        logoutBTN = (Button) findViewById(R.id.LGbutton);
-
         mAuth = FirebaseAuth.getInstance();
+        logoutBTN = findViewById(R.id.LGbutton);
 
-        //logut the user when clicked
         logoutBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,16 +41,26 @@ public class Home_Page extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), Login.class));
             }
         });
+
     }//end of onCreate
 
     @Override
     protected void onStart() {
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
-        if(user == null){
-            //if usert not autentificated go to login page
-            startActivity(new Intent(getApplicationContext(), Login.class));
-        }
+        updateUI(user);
     }//end of onStart
+
+    private void updateUI(FirebaseUser user) {
+        //redirect to the corresponding activity
+        if (user != null){
+            Log.e("TAG", "user is in");
+            //send user to the corresponding page
+            //startActivity(new Intent(getApplicationContext(), Home_Page.class));
+        }else{
+            Log.e("TAG", "User is out!!");
+
+        }
+    } //end of updateUI
 
 } // end of home_Page
