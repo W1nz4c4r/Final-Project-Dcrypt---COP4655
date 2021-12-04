@@ -41,6 +41,7 @@
                     app:layout_constraintTop_toTopOf="@id/card1P"
                     tools:layout_editor_absoluteY="25dp" />
 
+
                 <TextView
                     android:id="@+id/tv2"
                     android:layout_width="wrap_content"

@@ -35,7 +35,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         //bin the data
         holder.coinName.setText(CRY_coins.get(position).getCoin_Name());
         holder.coinNick.setText(CRY_coins.get(position).getCoin_short_name());
-        holder.coinPrice.setText(CRY_coins.get(position).getCoin_price());
+        holder.coinPrice.setText("$" + CRY_coins.get(position).getCoin_price());
         Picasso.get().load(CRY_coins.get(position).getCoin_icon_url()).into(holder.coinIMG);
     }
 

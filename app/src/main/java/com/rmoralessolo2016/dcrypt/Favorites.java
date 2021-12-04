@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Locale;
+
 public class Favorites extends AppCompatActivity {
     FirebaseAuth mAuth;
     EditText userInput;
@@ -81,6 +83,7 @@ public class Favorites extends AppCompatActivity {
     public void search_information(){
         Log.e("TAG", "on search button ONCLICK");
         String userInput_value= userInput.getText().toString();
+        userInput_value = userInput_value.toUpperCase();
         if (userInput_value.isEmpty()){
             //if input empty show text
             Toast.makeText(getApplicationContext(), "Can't look for an empty value", Toast.LENGTH_LONG).show();

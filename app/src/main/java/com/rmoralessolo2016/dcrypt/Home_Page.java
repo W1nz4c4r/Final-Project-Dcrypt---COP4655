@@ -28,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class Home_Page extends AppCompatActivity {
@@ -182,9 +183,25 @@ public class Home_Page extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(response);
                 JSONObject jsonObject1 = new JSONObject(hand);
                 cryptoMG cryptoMG = new cryptoMG();
-                cryptoMG.setCoin_Name(jsonObject.getString("name"));
-                cryptoMG.setCoin_short_name(jsonObject.getString("id"));
+                String name = jsonObject.getString("name");
+                String id = jsonObject.getString("id");
+                if(name.equals("Ether")){
+                    name = "Ethereum";
+                }
+                if(name.equals("Synthetix")){
+                    name = "Synthetix Network Token";
+                }
+                if (name.equals("ARPA")){
+                    name ="ARPA Chain";
+                }
+                if(name.equals("Fetch.ai")){
+                    name = "Fetch ai";
+                }
+
+                cryptoMG.setCoin_Name(name);
+                cryptoMG.setCoin_short_name(id);
                 cryptoMG.setCoin_price(jsonObject1.getString("last"));
+                cryptoMG.setCoin_icon_url(getString(R.string.iconsURL) + id.toLowerCase() + "-" + name.replace(" ","-").toLowerCase() + ".png" );
 
                 crypto.add(cryptoMG);
 
@@ -213,7 +230,7 @@ public class Home_Page extends AppCompatActivity {
             int rand = (int) (Math.random() * (122 - 1)) + 1;
             while (valid){
                 //if rand in possition of important coins --> generate new rand
-                if ( rand == 5 || rand == 120 || rand == 94 || rand == 41 || rand == 50 || rand == 89){
+                if ( rand == 5 || rand == 120 || rand == 94 || rand == 41 || rand == 50 || rand == 51  || rand == 89){
                     rand = (int) (Math.random() * (122 - 1)) + 1;
                 } else{
                     valid = false;
