@@ -9,13 +9,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="670dp">
+        android:layout_height="670dp"
+        android:layout_above="@+id/Bottom_navigation"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="15dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/Recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
 
         </androidx.recyclerview.widget.RecyclerView>

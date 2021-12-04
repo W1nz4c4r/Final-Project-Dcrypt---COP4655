@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -82,7 +83,7 @@ public class Home_Page extends AppCompatActivity {
                 return true;
             }
         });
-
+        Toast.makeText(getApplicationContext(), "Getting Coins information", Toast.LENGTH_LONG).show();
         launch_prueba();
     }//end of onCreate
 
@@ -112,6 +113,15 @@ public class Home_Page extends AppCompatActivity {
             //doing request with volley
 
             RequestQueue queue1 = Volley.newRequestQueue(Home_Page.this);
+            try
+            {
+                //sleep so it doesn't block all the calls to the api being made
+                Thread.sleep(150);
+            }
+            catch(InterruptedException ex)
+            {
+                Thread.currentThread().interrupt();
+            }
             StringRequest stringRequest1 = new StringRequest(Request.Method.GET, jsonURL1, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response1) {
@@ -129,16 +139,17 @@ public class Home_Page extends AppCompatActivity {
             //---------------------------------
             //doing second request on second URL
             //doing request with volley
+
+            RequestQueue queue = Volley.newRequestQueue(Home_Page.this);
             try
             {
                 //sleep so it doesn't block all the calls to the api being made
-                Thread.sleep(200);
+                Thread.sleep(150);
             }
             catch(InterruptedException ex)
             {
                 Thread.currentThread().interrupt();
             }
-            RequestQueue queue = Volley.newRequestQueue(Home_Page.this);
             StringRequest stringRequest = new StringRequest(Request.Method.GET, jsonURL, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -185,7 +196,7 @@ public class Home_Page extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Toast.makeText(getApplicationContext(),"Couldn't get json from server. Check LogCat for possible errors!",Toast.LENGTH_SHORT).show();
+                    Log.e("TAG","Couldn't get json from server. Check LogCat for possible errors!");
                 }
             });
         }
@@ -196,11 +207,20 @@ public class Home_Page extends AppCompatActivity {
         Log.e("TAG", "in randomize others");
         //formating the array
         Coins = getString(R.string.coinss).split(",");
-
+        boolean valid = true;
         //selecting other 7 rand coins to show
         for(int i = 0; i < 7; i++){
-            int rand = (int) (Math.random() * (125 - 1)) + 1;
-            Log.e("TAG", "rand is : " + rand);
+            int rand = (int) (Math.random() * (122 - 1)) + 1;
+            while (valid){
+                //if rand in possition of important coins --> generate new rand
+                if ( rand == 5 || rand == 120 || rand == 94 || rand == 41 || rand == 50 || rand == 89){
+                    rand = (int) (Math.random() * (122 - 1)) + 1;
+                } else{
+                    valid = false;
+                }
+
+            }
+            Log.e("TAG", "rand is : " + Coins);
             coins_check.add(Coins[rand]);
         }
 
@@ -237,5 +257,6 @@ public class Home_Page extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), Login.class));
         }
     } //end of updateUI
+
 
 } // end of home_Page

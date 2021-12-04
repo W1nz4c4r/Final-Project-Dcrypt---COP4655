@@ -5,13 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Favorites extends AppCompatActivity {
     FirebaseAuth mAuth;
+    EditText userInput;
+    Button SearchBTN;
+    String url1, url2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +33,12 @@ public class Favorites extends AppCompatActivity {
         // declare bottom nav view
         BottomNavigationView bottomNavigationView =  (BottomNavigationView) findViewById(R.id.Bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.Favorites);
+        userInput = (EditText) findViewById(R.id.Search_coin);
+        SearchBTN = (Button) findViewById(R.id.Search_coin_Button);
+        url1 = getString(R.string.coinBase) + "currencies/";
+        url2 = getString(R.string.coinBase) + "products/";
+
+
         //add listener to the Bottom navigation
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -50,5 +66,34 @@ public class Favorites extends AppCompatActivity {
             }
         });
 
+        //add listener to the search button
+        SearchBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //calling corresponding function
+                search_information();
+
+            }
+        });
+
     }//end of onCreate
+
+    public void search_information(){
+        Log.e("TAG", "on search button ONCLICK");
+        String userInput_value= userInput.getText().toString();
+        if (userInput_value.isEmpty()){
+            //if input empty show text
+            Toast.makeText(getApplicationContext(), "Can't look for an empty value", Toast.LENGTH_LONG).show();
+        } else {
+            //creating urls
+            url1 = url1 +  userInput_value;
+            url2 = url2 + userInput_value + "-USD/candles";
+
+            Intent intent =  new Intent(getApplicationContext(), coin_Information_activity.class);
+            intent.putExtra("url1", url1);
+            intent.putExtra("url2", url2);
+            startActivity(intent);
+            overridePendingTransition(0,0);
+        }
+    } //end of search_information
 } //end of Favorites Activity

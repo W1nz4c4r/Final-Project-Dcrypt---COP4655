@@ -15,8 +15,8 @@
 
     <item
         android:id="@+id/Favorites"
-        android:title="Favorites"
-        android:icon="@drawable/ic_favorites"
+        android:title="Search"
+        android:icon="@drawable/ic_search"
         />
 
     <item
