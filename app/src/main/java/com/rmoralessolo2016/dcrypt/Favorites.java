@@ -90,7 +90,7 @@ public class Favorites extends AppCompatActivity {
         } else {
             //creating urls
             url1 = url1 +  userInput_value;
-            url2 = url2 + userInput_value + "-USD/candles";
+            url2 = url2 + userInput_value + "-USD/stats";
 
             Intent intent =  new Intent(getApplicationContext(), coin_Information_activity.class);
             intent.putExtra("url1", url1);

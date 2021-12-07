@@ -185,18 +185,18 @@ public class Home_Page extends AppCompatActivity {
                 cryptoMG cryptoMG = new cryptoMG();
                 String name = jsonObject.getString("name");
                 String id = jsonObject.getString("id");
-                if(name.equals("Ether")){
-                    name = "Ethereum";
-                }
-                if(name.equals("Synthetix")){
-                    name = "Synthetix Network Token";
-                }
-                if (name.equals("ARPA")){
-                    name ="ARPA Chain";
-                }
-                if(name.equals("Fetch.ai")){
-                    name = "Fetch ai";
-                }
+                if(name.equals("Ether")){ name = "Ethereum";     }
+                if(name.equals("Ether Classic")){  name = "Ethereum Classic";}
+                if (name.equals("Ren")){ name ="republic protocol"; }
+                if(name.equals("Origin Token")){ name = "Origin Protocol"; }
+                if(name.equals("Crypto.com Coin")){ name ="Cryptocom chain";}
+                if(name.equals("Ankr")){ name = "Ankr Network";}
+                if(name.equals("Badger DAO")){name = "Badger"; }
+                if(name.equals("IoTeX (ERC-20)")){ name = "IoTeX"; }
+                if(name.equals("Synthetix")){ name = "Synthetix Network Token"; }
+                if (name.equals("ARPA")){ name ="ARPA Chain"; }
+                if(name.equals("Fetch.ai")){ name = "Fetch ai"; }
+                if(name.equals("LCX Token")){ name = "LCX"; }
 
                 cryptoMG.setCoin_Name(name);
                 cryptoMG.setCoin_short_name(id);
@@ -252,8 +252,8 @@ public class Home_Page extends AppCompatActivity {
         int IMP_number = (int) (Math.random() * (3 -1)) + 1;
         IMP = Rimp[IMP_number];
         coins_check.add(BTC);
-        coins_check.add(IMP);
         coins_check.add(ETH);
+        coins_check.add(IMP);
     } //end of randomize_coins
 
     @Override
