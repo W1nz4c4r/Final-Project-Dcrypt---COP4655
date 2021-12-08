@@ -316,7 +316,7 @@
                 <TextView
                     android:id="@+id/link1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="20dp"
                     android:autoLink="web"
                     app:layout_constraintTop_toBottomOf="@+id/news_one_desc"
                     android:layout_marginTop="15dp"
@@ -367,7 +367,7 @@
                 <TextView
                     android:id="@+id/link2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="20dp"
                     android:fontFamily="@font/roboto_slab"
                     android:autoLink="web"
                     app:layout_constraintTop_toBottomOf="@+id/news_two_desc"

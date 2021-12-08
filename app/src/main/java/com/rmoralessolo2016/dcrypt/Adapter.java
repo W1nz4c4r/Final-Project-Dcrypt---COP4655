@@ -44,7 +44,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         return CRY_coins.size() - 1;
     }
 
-    public class ViewHolder  extends RecyclerView.ViewHolder{
+    public static class ViewHolder  extends RecyclerView.ViewHolder{
         TextView coinName, coinNick, coinPrice;
         ImageView coinIMG;
 
